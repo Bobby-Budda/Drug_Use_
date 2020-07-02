@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import logo from './PillsLogo.jpeg';
 import './App.css';
 import Chart from './components/Chart';
+
+import { DrugUseProvider } from './drug-use-context';
+import Dummy from './Dummy'
+
 /*import {scaleLinear} from 'd3-scale';*/
 
 
@@ -53,13 +57,16 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <DrugUseProvider> 
+        <Dummy> </Dummy>
+      {/* <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Drug use by Age</h2>
         </div>
         <Chart chartData={this.state.chartData} location="Age" legendPosition="bottom"/>
-      </div>
+      </div> */}
+      </DrugUseProvider>
     );
   }
  /* d3.csv('drug-use-by-age.csv')
