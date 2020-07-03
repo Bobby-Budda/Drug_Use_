@@ -9,9 +9,11 @@ export function loadDrugUseData () {
 export const DrugUseContext = createContext()
 
 export function DrugUseProvider (props) {
-  const [druguse, setdruguse] = useState ([])
+  const [druguse, setdruguse] = useState ([{age: '0'}])
   useEffect (() => {
-    loadDrugUseData ().then ((DrugUseData)=>{setdruguse(DrugUseData)})
+    loadDrugUseData().then((DrugUseData)=>{
+      setdruguse(DrugUseData)
+    })
   })
     return (
       <DrugUseContext.Provider value= {[druguse, setdruguse]}>
