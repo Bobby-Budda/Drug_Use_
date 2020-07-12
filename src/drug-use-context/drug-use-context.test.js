@@ -15,7 +15,7 @@ describe('drug-use-context', () => {
             fetch.mockResponseOnce(csvContent)
 
             const data = await loadDrugUseData();
-            expect(data.length).toEqual(rows.length-1)
+            expect(data.length).toEqual(rows.length-2)
 
             data.forEach((DrugUse) => {
                 expect(Object.keys(DrugUse)).toEqual(labels)
