@@ -2,42 +2,300 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.0-alpha/Chart.min.js"></script>
+    <title>Graph</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <!-- Das hier ist der Container in der die Chart geladen wird. Die ID muss mit dem document.getElementById('') übereinstimmen'  -->
+    <canvas id = "myChart"></canvas>
+    
+    <script>
+      // Konstanten die beim Aufsplitten der CSV Daten benutzt werden in getData()
+      const xlabels = [];
+      const yalcUsage = [];
+      const rnumbers = [];
+      const ymarijuana = [];
+      const ycocaine = [];
+      const ycrack = [];
+      const yheroin = [];
+      const yhallucinogen = [];
+      const yinhalant = [];
+      const ypainreleiver = [];
+      const yoxycontin = [];
+      const ytranquilizer = [];
+      const ystimulant = [];
+      const ymeth = [];
+      const ysedative = [];
+      const bubbledata = [];
+      const bubbledataAlcohol =[];
+      const bubbledataMarijuana =[];
+      const bubbledataCocaine =[];
+      const bubbledataCrack =[];
+      const bubbledataHeroin =[];
+      const bubbledataHallucinogen =[];
+      const bubbledataInhalant = [];
+      const bubbledataPainreleiver = [];
+      const bubbledataOxycontin =[];
+      const bubbledataTranquilizer = [];
+      const bubbledataStimulant = [];
+      const bubbledataMeth = [];
+      const bubbledataSedative = [];
+      //Aufruf der Hauptfunktion
+      chartIt();
+      async function chartIt(){
+          //await ist wichtig sonst ist nicht gewährleistest, dass die Daten beim Seiten laden schon vorhanden sind und verarbeitet werden konnten
+          await getData();
+          const ctx = document.getElementById('myChart').getContext('2d');
+          //für jede Row wird ein BubbleObjekt gebaut und an das Array Bubbledata gehangen
+          for(let i = 0; i< xlabels.length; i++){
+            // Alcohol
+            const aobject = {x: xlabels[i], y:yalcUsage[i], r:rnumbers[i]/200};
+            bubbledataAlcohol.push(aobject);
+            // Marijuana
+            const mobject = {x: xlabels[i], y:ymarijuana[i], r:rnumbers[i]/200};
+            bubbledataMarijuana.push(mobject);
+            //Cocaine
+            const cobject = {x: xlabels[i], y:ycocaine[i], r:rnumbers[i]/200};
+            bubbledataCocaine.push(cobject);
+            //Crack
+            const crackobject = {x: xlabels[i], y:ycrack[i], r:rnumbers[i]/200};
+            bubbledataCrack.push(crackobject);
+            //Heroin
+            const hobject = {x: xlabels[i], y:yheroin[i], r:rnumbers[i]/200};
+            bubbledataHeroin.push(hobject);
+            //Hallucinogen
+            const halluobject = {x: xlabels[i], y:yhallucinogen[i], r:rnumbers[i]/200};
+            bubbledataHallucinogen.push(halluobject);
+            //Inhalant
+            const iobjekt = {x: xlabels[i], y:yinhalant[i], r:rnumbers[i]/200};
+            bubbledataInhalant.push(iobjekt);
+            //Pain-Releiver
+            const pobjekt = {x: xlabels[i], y:ypainreleiver[i], r:rnumbers[i]/200};
+            bubbledataPainreleiver.push(pobjekt);
+            //Oxicontin
+            const oobjekt = {x: xlabels[i], y:yoxycontin[i], r:rnumbers[i]/200};
+            bubbledataOxycontin.push(oobjekt);
+            //Tranqilizer
+            const tobjekt = {x: xlabels[i], y:ytranquilizer[i], r:rnumbers[i]/200};
+            bubbledataTranquilizer.push(tobjekt);
+            //Stimulant
+            const stobjekt = {x: xlabels[i], y:ystimulant[i], r:rnumbers[i]/200};
+            bubbledataStimulant.push(stobjekt);
+            //Meth
+            const mobjekt = {x: xlabels[i], y:ymeth[i], r:rnumbers[i]/200};
+            bubbledataMeth.push(mobjekt);     
+            //Sedative
+            const sobjekt = {x: xlabels[i], y:ysedative[i], r:rnumbers[i]/200};
+            bubbledataSedative.push(sobjekt);               
+            
+          }
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+          
+      
+
+          // Erstellt das Grundgerüst der Chart im 2 dimensionalen Context
+          // Beschriftung der x-Achse durch die Constante xlabels 
+          // Erstellung der Punkte durch die Constante bubbledata, welche die Form {x: Wert, y: Wert, Radius:Wert} hat
+          //                                                                           (Alter, AlcUsa, Anzahl /100 (weils in Pixeln angegeben werden muss)
+          
+          const myChart = new Chart(ctx, {
+              type: 'bubble',
+              
+              data: {
+                  labels: xlabels,
+                  datasets: [{
+                      label: 'Alcohol',
+                      data: bubbledataAlcohol,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor:'rgba(255, 99, 132, 0.2)',
+                      borderColor: 'rgba(255, 99, 132, 1)',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Marijuana',
+                      data: bubbledataMarijuana,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "green",
+                      borderColor: 'green',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Cocaine',
+                      data: bubbledataCocaine,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "blue",
+                      borderColor: 'blue',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Crack',
+                      data: bubbledataCrack,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "silver",
+                      borderColor: 'silver',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Heroin',
+                      data: bubbledataHeroin,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "yellow",
+                      borderColor: 'yellow',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Hallucinogen',
+                      data: bubbledataHallucinogen,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "red",
+                      borderColor: 'red',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Inhalant',
+                      data: bubbledataInhalant,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "black",
+                      borderColor: 'black',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Pain Releiver',
+                      data: bubbledataPainreleiver,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "silver",
+                      borderColor: 'silver',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Oxycontin',
+                      data: bubbledataOxycontin,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "orange",
+                      borderColor: 'orange',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Tranquilizer',
+                      data: bubbledataTranquilizer,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "green",
+                      borderColor: 'green',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Stimulant',
+                      data: bubbledataStimulant,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "blue",
+                      borderColor: 'blue',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Meth',
+                      data: bubbledataMeth,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor: "red",
+                      borderColor: 'red',
+                      borderWidth: 1
+                      
+                  },
+                  {
+                      label: 'Sedative',
+                      data: bubbledataSedative,
+                      //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+                      backgroundColor:'rgba(255, 99, 132, 0.2)',
+                      borderColor: 'rgba(255, 99, 132, 1)',
+                      borderWidth: 1
+                      
+                  }
+                ],            
+
+              },
+              options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                            callback: function(value, index, values) {
+                             return value + '%';
+                           }
+                          }
+                      }]
+                  
+                    },
+                    title: {
+                      display: true,
+                      fontSize : 25,
+                      text: 'Drug Usage By Age'
+                  }
+                  
+            }
+
+          });
+          };
+
+
+         
+      
+      //Holt sich die Daten aus der CSV und splittet sie erst in Reihen dann in Spalten pro Reihe auf 
+      async function getData(){
+          response = await fetch('drug-use-by-age.csv');
+          const data = await response.text();
+
+
+          const table = data.split('\n').slice(1);
+          table.forEach(row => {
+            const columns = row.split(',');
+            const age = columns[0];
+            xlabels.push(age);
+            const number = columns[1];
+            rnumbers.push(number);            
+            const alcUsage = columns[2];
+            yalcUsage.push(alcUsage);
+            const marijuana = columns[3];
+            ymarijuana.push(marijuana);
+            const cocaine = columns[4];
+            ycocaine.push(cocaine);
+            const crack = columns[5];
+            ycrack.push(crack);
+            const heroin = columns[6];
+            yheroin.push(heroin);
+            const hallu = columns[7];
+            yhallucinogen.push(hallu);
+            const inhalant = columns[8];
+            yinhalant.push(inhalant);
+            const painreleiver = columns[9];
+            ypainreleiver.push(painreleiver);
+            const oxycontin = columns[10];
+            yoxycontin.push(oxycontin);
+            const tranquilizer = columns[11];
+            ytranquilizer.push(tranquilizer);
+            const stimulant = columns[12];
+            ystimulant.push(stimulant);
+            const meth = columns[13];
+            ymeth.push(meth); 
+            const sedative = columns[14];
+            
+        });
+        
+      
+      }
+    </script>
+
+
   </body>
 </html>
