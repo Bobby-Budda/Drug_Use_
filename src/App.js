@@ -49,7 +49,7 @@ class App extends Component {
       <DrugUseProvider>
         <div className="App">
           <div className="App-header">
-            <img src={logo} className="Logo" alt="logo" />
+            <img src={logo} className="App-logo" alt="logo" />
             <h2>Drug use by Age</h2>
           </div>
           <Chart
