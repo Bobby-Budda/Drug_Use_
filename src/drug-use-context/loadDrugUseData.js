@@ -1,6 +1,14 @@
 import parse from "csv-parse/lib/sync";
-export function loadDrugUseData() {
+
+export function loadDrugUseData () {
   return fetch("/drug-use-by-age.csv")
-    .then((response) => response.text())
-    .then((text) => parse(text, { columns: true }));
+    .then((response) => {
+        return response.text()
+    })
+    .then((text) => {
+        return parse(text, { 
+            columns: true 
+        })
+    })
+
 }

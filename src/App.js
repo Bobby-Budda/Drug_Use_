@@ -1,72 +1,153 @@
-import React, { Component } from "react";
-import logo from "./PillsLogo.jpeg";
-import "./App.css";
-import Chart from "./components/Chart";
+import React, {useContext} from 'react'
+import { Bubble } from 'react-chartjs-2'
+import { DrugUseContext } from "./drug-use-context/DrugUseContext";
+import { extractn } from './chart-helper'
 
-import { DrugUseProvider } from "./drug-use-context/DrugUseProvider";
-import Dummy from "./Dummy";
+export default function App() {
+    const [DrugUseData] = useContext(DrugUseContext)
 
-/*import {scaleLinear} from 'd3-scale';*/
+    const labels = DrugUseData ? DrugUseData
+        .map((entry) => {
+          return entry.druguse
+        })
+    :[]
+    
+    return <Bubble data= {{
+      labels: labels,
+      datasets: [{
+          label: '# of Prozent',
+          data: extractn(DrugUseData),
+          backgroundColor: 'yellow',
+          borderColor: '#fff',
+          borderWidth: 1
+      }]
+              //     labels: labels,
+              //     datasets: [{
+              //         label: 'Alcohol',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor:'rgba(255, 99, 132, 0.2)',
+              //         borderColor: 'rgba(255, 99, 132, 1)',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Marijuana',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "green",
+              //         borderColor: 'green',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Cocaine',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "blue",
+              //         borderColor: 'blue',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Crack',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "silver",
+              //         borderColor: 'silver',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Heroin',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "yellow",
+              //         borderColor: 'yellow',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Hallucinogen',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "red",
+              //         borderColor: 'red',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Inhalant',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "black",
+              //         borderColor: 'black',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Pain Releiver',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "silver",
+              //         borderColor: 'silver',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Oxycontin',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "orange",
+              //         borderColor: 'orange',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Tranquilizer',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "green",
+              //         borderColor: 'green',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Stimulant',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "blue",
+              //         borderColor: 'blue',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Meth',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor: "red",
+              //         borderColor: 'red',
+              //         borderWidth: 1
+                      
+              //     },
+              //     {
+              //         label: 'Sedative',
+              //         data: extractn(DrugUseData),
+              //         //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
+              //         backgroundColor:'rgba(255, 99, 132, 0.2)',
+              //         borderColor: 'rgba(255, 99, 132, 1)',
+              //         borderWidth: 1
+                      
+              //     }
+              //   ],            
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      chartData: {},
-    };
-  }
+              // },
+              
+              
+          
+    }}/>
 
-  componentWillMount() {
-    this.getChartData();
-  }
+  
 
-  getChartData() {
-    this.setState({
-      chartData: {
-        labels: ["Age", "Mari", "Weed", "Drugs", "Pills", "New High"],
-        datasets: [
-          {
-            label: "NewLabel",
-            data: [617594, 181045, 153060, 106519, 105162, 95072],
+};
 
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.6)",
-              "rgba(54, 162, 235, 0.6)",
-              "rgba(255, 206, 86, 0.6)",
-              "rgba(75, 192, 192, 0.6)",
-              "rgba(153, 102, 255, 0.6)",
-              "rgba(255, 159, 64, 0.6)",
-              "rgba(255, 99, 132, 0.6)",
-            ],
-          },
-        ],
-      },
-    });
-  }
-
-  render() {
-    return (
-      <DrugUseProvider>
-        <div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h2>Drug use by Age</h2>
-          </div>
-          <Chart
-            chartData={this.state.chartData}
-            location="Age"
-            legendPosition="bottom"
-          />
-        </div>
-        <Dummy></Dummy>
-      </DrugUseProvider>
-    );
-  }
-  /* d3.csv('drug-use-by-age.csv')
-  .then(makeChart);
-
-function makeChart(players) {
-}*/
-}
-
-export default App;
