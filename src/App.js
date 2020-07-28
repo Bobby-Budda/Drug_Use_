@@ -1,26 +1,41 @@
 import React, {useContext} from 'react'
 import { Bubble } from 'react-chartjs-2'
 import { DrugUseContext } from "./drug-use-context/DrugUseContext";
-import { extractn } from './chart-helper'
+import { DrugUseProvider} from "./drug-use-context/DrugUseProvider";
+import { extractn } from './chart-helper';
+import  MyChart from './MyChart';
+
 
 export default function App() {
-    const [DrugUseData] = useContext(DrugUseContext)
+  const [DrugUseData] = useContext(DrugUseContext)
+  return (
+  <div>
+    <h1>Drug Use by Age</h1>
+    <MyChart/>
+  </div>
+  )
 
-    const labels = DrugUseData ? DrugUseData
-        .map((entry) => {
-          return entry.druguse
-        })
-    :[]
+  
+}
+
+// export default function App() {
+//     const [DrugUseData] = useContext(DrugUseContext)
+
+//     const labels = DrugUseData ? DrugUseData
+//         .map((entry) => {
+//           return entry.druguse
+//         })
+//     :[]
     
-    return <Bubble data= {{
-      labels: labels,
-      datasets: [{
-          label: '# of Prozent',
-          data: extractn(DrugUseData),
-          backgroundColor: 'yellow',
-          borderColor: '#fff',
-          borderWidth: 1
-      }]
+//     return <Bubble data= {{
+//       labels: labels,
+//       datasets: [{
+//           label: '# of Prozent',
+//           data: extractn(DrugUseData),
+//           backgroundColor: 'yellow',
+//           borderColor: '#fff',
+//           borderWidth: 1
+//       }]
               //     labels: labels,
               //     datasets: [{
               //         label: 'Alcohol',
@@ -145,9 +160,11 @@ export default function App() {
               
               
           
-    }}/>
+//     }}/>
 
-  
+    
+      
+// };
 
-};
+
 
