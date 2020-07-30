@@ -31,8 +31,9 @@ describe ('chart-helper', () => {
             expect (result['alcohol-use']).toEqual([58.7])
 
         })
-
     })
+
+    
 //     describe('extractn', () => {
 //         it ('should return empty list on empty input', () => {
 //             expect(extractn([])).toEqual([])

@@ -14,7 +14,14 @@ export function extractUsePerDrug(input) {
             result['alcohol-use'] = []
         }
         result['alcohol-use'].push(line['alcohol-use']);
+
+        if (!result['marijuana-use']) {
+            result['marijuana-use'] = []
+        }
+        result['marijuana-use'].push(line['marijuana-use']);
     })
+ //wissen nicht wie wir mehrere Labels returnen
     return {'alcohol-use':[58.7]
     }
+        
 }
