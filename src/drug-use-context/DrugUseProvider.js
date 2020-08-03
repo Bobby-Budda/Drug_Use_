@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { loadDrugUseData } from "./loadDrugUseData";
 import { DrugUseContext } from "./DrugUseContext";
+
 export function DrugUseProvider(props) {
   const [druguse, setdruguse] = useState([]);
   useEffect(() => {
