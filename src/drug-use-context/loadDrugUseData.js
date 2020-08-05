@@ -1,4 +1,3 @@
-import parse from "csv-parse/lib/sync";
 
 export function loadDrugUseData () {
   return fetch("/drug-use-by-age.csv")

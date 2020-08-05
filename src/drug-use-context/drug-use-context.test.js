@@ -1,7 +1,7 @@
 import { loadDrugUseData } from './loadDrugUseData'
-import { execPath } from 'process'
-import { isTSAnyKeyword } from '@babel/types'
 import {readFileSync} from 'fs'
+
+//siehe Branch "Bugfix" -> hier funktionieren die tests  
 
 describe('drug-use-context', () => {
 

@@ -25,8 +25,8 @@ export default function MyChart(){
                                 label: 'Alcohol',
                                 data: usePerDrug['alcohol'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor:'rgba(255, 99, 132, 0.2)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
+                                backgroundColor:'Pink',
+                                borderColor: 'Pink',
                                 borderWidth: 1
                                 
                             },
@@ -34,8 +34,8 @@ export default function MyChart(){
                                 label: 'Cocaine',
                                 data: usePerDrug['cocaine'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "blue",
-                                borderColor: 'blue',
+                                backgroundColor: "RoyalBlue",
+                                borderColor: 'RoyalBlue',
                                 borderWidth: 1
                                 
                             },
@@ -52,8 +52,8 @@ export default function MyChart(){
                                 label: 'Heroin',
                                 data: usePerDrug['heroin'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "yellow",
-                                borderColor: 'yellow',
+                                backgroundColor: "Orange",
+                                borderColor: 'Orange',
                                 borderWidth: 1
                                 
                             },
@@ -61,8 +61,8 @@ export default function MyChart(){
                                 label: 'Hallucinogen',
                                 data: usePerDrug['hallucinogen'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "red",
-                                borderColor: 'red',
+                                backgroundColor: "IndianRed",
+                                borderColor: 'IndianRed',
                                 borderWidth: 1
                                 
                             },
@@ -79,8 +79,8 @@ export default function MyChart(){
                                 label: 'Pain Releiver',
                                 data: usePerDrug['painreleiver'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "silver",
-                                borderColor: 'silver',
+                                backgroundColor: "purple",
+                                borderColor: 'purple',
                                 borderWidth: 1
                                 
                             },
@@ -88,8 +88,8 @@ export default function MyChart(){
                                 label: 'Oxycontin',
                                 data: usePerDrug['oxycontin'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "orange",
-                                borderColor: 'orange',
+                                backgroundColor: "CadetBlue",
+                                borderColor: 'CadetBlue',
                                 borderWidth: 1
                                 
                             },
@@ -97,8 +97,8 @@ export default function MyChart(){
                                 label: 'Tranquilizer',
                                 data: usePerDrug['tranquilizer'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "green",
-                                borderColor: 'green',
+                                backgroundColor: "DeepSkyBlue",
+                                borderColor: 'DeepSkyBlue',
                                 borderWidth: 1
                                 
                             },
@@ -106,8 +106,8 @@ export default function MyChart(){
                                 label: 'Stimulant',
                                 data: usePerDrug['stimulant'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "blue",
-                                borderColor: 'blue',
+                                backgroundColor: "LightCoral",
+                                borderColor: 'LightCoral',
                                 borderWidth: 1
                                 
                             },
@@ -115,8 +115,8 @@ export default function MyChart(){
                                 label: 'Meth',
                                 data: usePerDrug['meth'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor: "red",
-                                borderColor: 'red',
+                                backgroundColor: "Olive",
+                                borderColor: 'Olive',
                                 borderWidth: 1
                                 
                             },
@@ -124,8 +124,8 @@ export default function MyChart(){
                                 label: 'Sedative',
                                 data: usePerDrug['sedative'],
                                 //Die Farbangaben können durch ein Array auf die einzelnen Punkte unterschieden werden. 
-                                backgroundColor:'rgba(255, 99, 132, 0.2)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
+                                backgroundColor:"Peru",
+                                borderColor: "Peru",
                                 borderWidth: 1
                                 
                             }
@@ -156,8 +156,7 @@ export default function MyChart(){
             
                      )
                     }
-  
-//Auf Daten zugreifen
+
 
     
 

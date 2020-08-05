@@ -40,7 +40,7 @@ const bubbledataSedative = [];
 
 export function ExtractUsePerDrug(input) {
 
-    //Ein Bubble (Punkt) besteht aus folgenden Daten punkt1 = {x: Wert, y: Wert, r: Radius ein Pixelwert, deswegen muss die Anzahl der Personen durch einen Wert geteilt werden}
+//Ein Bubble besteht aus folgenden Daten punkt1 = {x: Wert, y: Wert, r: Radius ein Pixelwert, deswegen muss die Anzahl der Personen durch einen Wert geteilt werden}
 
 // DU hast ein Objekt input in der Hand
 // Das Objekt muss zu einem String gemacht werden deswegen + ''

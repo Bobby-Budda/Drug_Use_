@@ -1,7 +1,7 @@
 import {extractn} from '.'
 import {extractUsePerDrug} from '.'
 
-
+//siehe Branch "Bugfix" -> hier funktionieren die tests 
 
 describe ('chart-helper', () => {
     describe ('extractUsePerDrug', () => {
@@ -27,6 +27,7 @@ describe ('chart-helper', () => {
         beforeEach(()=>{ //wird vor jedem it ausgeführt
             result = extractUsePerDrug (input)
         })
+
         it ('should contain alcohol usage', () => {
             const input2 = input+'';
     
@@ -35,23 +36,5 @@ describe ('chart-helper', () => {
             expect (columns[2].toEqual([58.7])
 
         })
-    })
-
-    
-//     describe('extractn', () => {
-//         it ('should return empty list on empty input', () => {
-//             expect(extractn([])).toEqual([])
-//         })
-
-//         it ('should return n in numbers', () => {
-//             const input = [{
-//                 age: '18',
-//                 n: '2469',
-//                 alcohol_use: '58.7'
-            
-                
-//             }]
-//             expect(extractn(input)).toEqual([2469])
-//         })
-//     })
+    })  
 })
