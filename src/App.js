@@ -9,7 +9,7 @@ export default function App() {
     <body>
       <div class="container">
         <h1>Drug Use by Age</h1>
-        <p>Percentage of those in an age group from 18-30 who used these drugtypes in the past 12 monthsb</p>
+        <p>Percentage of those in an age group from 18-30 who used these drugtypes in the past 12 months</p>
         <MyChart/>
       </div>
     </body>
